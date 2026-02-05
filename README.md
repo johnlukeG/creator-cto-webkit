@@ -147,7 +147,7 @@ Copy `.env.example` to `.env.local` and configure:
 |----------|----------|-------------|
 | `NEXT_PUBLIC_SITE_URL` | Yes | Your production URL |
 | `NEXT_PUBLIC_SUPABASE_URL` | No | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | No | Supabase anonymous key |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY` | No | Supabase anonymous key |
 | `NEXT_PUBLIC_GA_ID` | No | Google Analytics ID |
 
 ---
@@ -224,7 +224,7 @@ This template includes pre-built authentication pages:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your-anon-key
 ```
 
 4. In Supabase Dashboard, go to **Authentication > URL Configuration** and add:

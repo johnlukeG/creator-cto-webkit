@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
+/*
+ * ============================================
+ * COLOR CONFIGURATION
+ * ============================================
+ *
+ * Colors are defined in site.config.ts for easy customization.
+ * The values below are fallbacks - your config colors will override these.
+ */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #3b82f6;
+  --color-secondary: #8b5cf6;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +23,18 @@
   }
 }
 
+/* Register colors with Tailwind v4 */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }

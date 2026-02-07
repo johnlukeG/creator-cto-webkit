@@ -31,8 +31,8 @@ const siteConfig = {
     primaryText: "Customize This Site",
     primaryLink: "#customize", // section id on the page
 
-    secondaryText: "See What’s Coming",
-    secondaryLink: "#roadmap", // section id on the page
+    secondaryText: "Watch on YouTube",
+    secondaryLink: "https://youtube.com/@yourchannel", // your YouTube channel URL
   },
 
   // ─────────────────────────────────────────

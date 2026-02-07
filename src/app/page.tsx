@@ -10,26 +10,34 @@ export default function Home() {
   return (
     <div className="flex min-h-[calc(100vh-4rem)] flex-col bg-background text-foreground">
       {/* Hero Section */}
-      <main className="flex flex-1 flex-col items-center justify-center px-6 py-16 text-center">
-        <h1 className="text-5xl font-bold tracking-tight sm:text-6xl">
+      <main className="relative flex flex-1 flex-col items-center justify-center px-6 py-20 text-center">
+        {/* Subtle gradient background */}
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-transparent" />
+
+        <h1 className="relative text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
           {name}
         </h1>
-        <p className="mt-6 max-w-2xl text-xl text-foreground/70">
+        <p className="relative mt-6 max-w-2xl text-lg text-foreground/60 sm:text-xl">
           {tagline}
         </p>
 
         {/* CTA Buttons */}
-        <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+        <div className="relative mt-12 flex flex-col gap-4 sm:flex-row sm:gap-6">
           <a
             href={cta.primaryLink}
-            className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-white transition-opacity hover:opacity-90"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-primary px-8 text-base font-medium text-white shadow-lg shadow-primary/25 transition-all hover:scale-[1.02] hover:shadow-xl hover:shadow-primary/30"
           >
             {cta.primaryText}
           </a>
           <a
             href={cta.secondaryLink}
-            className="inline-flex h-12 items-center justify-center rounded-full border border-foreground/20 px-8 text-base font-medium transition-colors hover:bg-foreground/5"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-foreground/15 bg-foreground/[0.02] px-8 text-base font-medium transition-all hover:scale-[1.02] hover:border-foreground/25 hover:bg-foreground/5"
           >
+            <svg className="h-5 w-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+              <path fillRule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clipRule="evenodd" />
+            </svg>
             {cta.secondaryText}
           </a>
         </div>
@@ -37,13 +45,21 @@ export default function Home() {
 
       {/* Features Section */}
       {features.length > 0 && (
-        <section className="border-t border-foreground/10 bg-foreground/[0.02] px-6 py-24">
+        <section className="border-t border-foreground/10 bg-gradient-to-b from-foreground/[0.02] to-transparent px-6 py-24">
           <div className="mx-auto max-w-5xl">
-            <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
               {features.map((feature, index) => (
-                <div key={index} className="text-center sm:text-left">
+                <div
+                  key={index}
+                  className="group rounded-2xl border border-foreground/[0.08] bg-background p-6 transition-all hover:border-foreground/15 hover:shadow-lg hover:shadow-foreground/5"
+                >
+                  <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                    <span className="text-lg font-bold">{index + 1}</span>
+                  </div>
                   <h3 className="text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-2 text-foreground/70">{feature.description}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-foreground/60">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -52,22 +68,22 @@ export default function Home() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-foreground/10 px-6 py-8">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 sm:flex-row">
-          <p className="text-sm text-foreground/60">
+      <footer className="border-t border-foreground/[0.08] px-6 py-10">
+        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 sm:flex-row">
+          <p className="text-sm text-foreground/50">
             &copy; {currentYear} {footer.copyright}. All rights reserved.
           </p>
 
           {/* Social Links */}
           {activeSocials.length > 0 && (
-            <div className="flex gap-4">
+            <div className="flex gap-5">
               {activeSocials.map(([platform, url]) => (
                 <a
                   key={platform}
                   href={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground/60 transition-colors hover:text-foreground"
+                  className="text-foreground/40 transition-all hover:scale-110 hover:text-foreground"
                   aria-label={platform}
                 >
                   <SocialIcon platform={platform} />

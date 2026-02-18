@@ -111,7 +111,7 @@ CREATE POLICY "Admins can modify site settings"
 CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS TRIGGER AS $$
 DECLARE
-    admin_email TEXT := '{{ADMIN_EMAIL}}'; -- Replace with your admin email
+    admin_email TEXT := 'test@creatorcto.com'; -- Admin email
 BEGIN
     INSERT INTO public.profiles (id, email, is_admin, created_at, updated_at)
     VALUES (
